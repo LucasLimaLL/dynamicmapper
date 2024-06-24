@@ -3,6 +3,7 @@ package com.lucaslima.dynamicmapper;
 import com.lucaslima.dynamicmapper.core.ports.in.MapperUseCase;
 import com.lucaslima.dynamicmapper.dto.Client;
 import com.lucaslima.dynamicmapper.dto.Email;
+import com.lucaslima.dynamicmapper.dto.Enterprise;
 import com.lucaslima.dynamicmapper.dto.Person;
 import com.lucaslima.dynamicmapper.dto.Worker;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ public class DynamicmapperApplication {
         Object object = new Person(
                 "Nome do Fulano",
                 LocalDate.parse("1990-01-01").atStartOfDay().toInstant(ZoneOffset.UTC),
+                "01234567890",
                 new Email("teste@teste.com"),
                 "123456789",
                 "M"
@@ -36,6 +38,7 @@ public class DynamicmapperApplication {
 
         System.out.println(mapperUseCase.map(object, Client.class));
         System.out.println(mapperUseCase.map(object, Worker.class));
+        System.out.println(mapperUseCase.map(object, Enterprise.class));
 
     }
 }

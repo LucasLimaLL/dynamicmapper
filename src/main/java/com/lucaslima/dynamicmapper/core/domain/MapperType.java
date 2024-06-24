@@ -4,5 +4,6 @@ public enum MapperType {
 
     SIMPLE,
     NORMALIZER,
+    FIXED,
     DYNAMIC;
 }

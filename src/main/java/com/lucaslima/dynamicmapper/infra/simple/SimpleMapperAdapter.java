@@ -12,8 +12,6 @@ public class SimpleMapperAdapter implements MapperPort {
 
     @Override
     public Object map(MapperProperty mapperProperty, Field selectedField, Object object) throws IllegalAccessException {
-        Field[] fieldsSource = object.getClass().getDeclaredFields();
-
         selectedField.setAccessible(true);
         return selectedField.get(object);
     }

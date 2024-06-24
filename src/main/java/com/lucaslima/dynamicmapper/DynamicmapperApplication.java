@@ -4,7 +4,7 @@ import com.lucaslima.dynamicmapper.core.ports.in.MapperUseCase;
 import com.lucaslima.dynamicmapper.dto.Client;
 import com.lucaslima.dynamicmapper.dto.Email;
 import com.lucaslima.dynamicmapper.dto.Person;
-import com.lucaslima.dynamicmapper.service.DynamicFunctionService;
+import com.lucaslima.dynamicmapper.dto.Worker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -35,16 +35,7 @@ public class DynamicmapperApplication {
         );
 
         System.out.println(mapperUseCase.map(object, Client.class));
+        System.out.println(mapperUseCase.map(object, Worker.class));
 
-    }
-
-    public Object getObject(Object object, String method, Class<?> returnClass) throws Exception {
-        return DynamicFunctionService.invokeMethodWithCast(
-                "com.lucaslima.dynamicmapper.service.functions.DynamicMethod",
-                method,
-                new Class[]{object.getClass()},
-                new Object[]{object},
-                returnClass
-        );
     }
 }

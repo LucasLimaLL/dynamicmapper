@@ -16,7 +16,7 @@ public class GetMapperPropertiesAdapter implements GetMapperPropertiesPort {
                 new MapperProperty("name", "name", MapperType.DYNAMIC, String.class, "com.lucaslima.dynamicmapper.infra.dynamic.PersonDynamicMapper", "getFirstName"),
                 new MapperProperty("lastName", "name", MapperType.DYNAMIC, String.class, "com.lucaslima.dynamicmapper.infra.dynamic.PersonDynamicMapper", "getLastName"),
                 new MapperProperty("age", "birthDate", MapperType.DYNAMIC, Integer.class, "com.lucaslima.dynamicmapper.infra.dynamic.PersonDynamicMapper", "getAge"),
-                new MapperProperty("email", "email", MapperType.SIMPLE, "email"),
+                new MapperProperty("email", "email", MapperType.DYNAMIC, String.class, "com.lucaslima.dynamicmapper.infra.dynamic.PersonDynamicMapper", "getEmail"),
                 new MapperProperty("phone", "phone", MapperType.SIMPLE, "phone"),
                 new MapperProperty("genderType", "gender", MapperType.NORMALIZER, "gender")
         );

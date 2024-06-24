@@ -1,5 +1,7 @@
 package com.lucaslima.dynamicmapper.infra.dynamic;
 
+import com.lucaslima.dynamicmapper.dto.Email;
+
 import java.time.Instant;
 import java.time.Period;
 import java.time.ZoneId;
@@ -19,5 +21,9 @@ public class PersonDynamicMapper {
         return Period.between(
                 birthDate.atZone(ZoneId.systemDefault()).toLocalDate(),
                 Instant.now().atZone(ZoneId.systemDefault()).toLocalDate()).getYears();
+    }
+
+    public String getEmail(Email email) {
+        return email.email();
     }
 }

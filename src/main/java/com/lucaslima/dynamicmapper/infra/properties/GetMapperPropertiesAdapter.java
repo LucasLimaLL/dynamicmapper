@@ -38,7 +38,7 @@ public class GetMapperPropertiesAdapter implements GetMapperPropertiesPort {
             List.of(
                     new MapperProperty("name", "name", MapperType.valueOf("SIMPLE"), ""),
                     new MapperProperty("documentNumber", "documentNumber", MapperType.valueOf("SIMPLE"), ""),
-                    new MapperProperty("type", "name", MapperType.valueOf("FIXED"), Class.forName("java.lang.String"), "JURIDICA"),
+                    new MapperProperty("type", null, MapperType.valueOf("FIXED"), Class.forName("java.lang.String"), "JURIDICA"),
                     new MapperProperty("phone", "phone", MapperType.valueOf("SIMPLE"), "")
 
             )

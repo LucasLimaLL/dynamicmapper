@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.lucaslima.dynamicmapper.core.domain.MapperType.FIXED;
+
 @Service
 public class ExecuteMapperService implements MapperUseCase {
 
@@ -70,12 +72,18 @@ public class ExecuteMapperService implements MapperUseCase {
     }
 
     private static Field getSelectedField(List<Field> fieldsSource, MapperProperty property) {
-        var selectedField = fieldsSource
+
+        var selectedField = (property.originField() == null || property.originField().isEmpty()) && property.mapperType().equals(FIXED)
+                ? null
+                : fieldsSource
                 .stream()
                 .filter(f -> f.getName().equalsIgnoreCase(property.originField()))
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Origin field " + property.originField() + " not found"));
-        selectedField.setAccessible(true);
+
+        if (selectedField != null) {
+            selectedField.setAccessible(true);
+        }
         return selectedField;
     }
 

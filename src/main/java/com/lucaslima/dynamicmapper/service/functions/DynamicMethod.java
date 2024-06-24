@@ -1,4 +1,7 @@
-package com.lucaslima.dynamicmapper.mapper;
+package com.lucaslima.dynamicmapper.service.functions;
+
+import com.lucaslima.dynamicmapper.dto.Client;
+import com.lucaslima.dynamicmapper.dto.Person;
 
 import java.time.Instant;
 import java.time.Period;
@@ -20,6 +23,7 @@ public class DynamicMethod {
                 lastName,
                 age,
                 person.email().email(),
-                person.phone());
+                person.phone(),
+                person.gender());
     }
 }

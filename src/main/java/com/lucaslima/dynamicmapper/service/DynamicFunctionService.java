@@ -1,8 +1,8 @@
-package com.lucaslima.dynamicmapper.mapper;
+package com.lucaslima.dynamicmapper.service;
 
 import java.lang.reflect.Method;
 
-public class DynamicMapper {
+public class DynamicFunctionService {
 
     public static <T> T invokeMethodWithCast(String className, String methodName, Class<?>[] parameterTypes, Object[] parameters, Class<T> returnTypeClass) throws Exception {
 

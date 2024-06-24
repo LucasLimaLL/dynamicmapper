@@ -1,4 +1,4 @@
-package com.lucaslima.dynamicmapper.mapper;
+package com.lucaslima.dynamicmapper.dto;
 
 import java.util.regex.Pattern;
 

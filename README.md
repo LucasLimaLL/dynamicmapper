@@ -60,4 +60,6 @@ Contribuições são bem-vindas! Por favor, sinta-se à vontade para abrir um pr
 
 <h3>Documentações que podem ajudar</h3>
 
-[💾 Commit pattern](https://www.conventionalcommits.org/pt-br/v1.0.0/)
+[💾 Conventional Commits](https://www.conventionalcommits.org/pt-br/v1.0.0/)<br/>
+[💾 Commit pattern](https://medium.com/linkapi-solutions/conventional-commits-pattern-3778d1a1e657)
+

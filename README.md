@@ -50,7 +50,7 @@ Aqui estão alguns exemplos de como a aplicação pode ser usada:
 private MapperUseCase mapperUseCase;
 
 Person person = new Person("John Doe", "john.doe@example.com", "123-456-7890");
-Client client = (Client) mapperUseCasemapperUseCase.map(object, Client.class);
+Client client = (Client) mapperUseCase.map(object, Client.class);
 
 ```
 

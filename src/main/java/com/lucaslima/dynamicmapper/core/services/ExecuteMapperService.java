@@ -5,7 +5,7 @@ import com.lucaslima.dynamicmapper.core.domain.SpecificField;
 import com.lucaslima.dynamicmapper.core.ports.in.MapperUseCase;
 import com.lucaslima.dynamicmapper.core.ports.out.ConstructorPort;
 import com.lucaslima.dynamicmapper.core.ports.out.GetMapperPropertiesPort;
-import com.lucaslima.dynamicmapper.core.ports.out.MapperPort;
+import com.lucaslima.dynamicmapper.core.ports.out.MapperFieldPort;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Constructor;
@@ -19,22 +19,22 @@ import static com.lucaslima.dynamicmapper.core.domain.MapperType.FIXED;
 @Service
 public class ExecuteMapperService implements MapperUseCase {
 
-    private final List<MapperPort> mapperPorts;
+    private final List<MapperFieldPort> mapperFieldPorts;
     private final GetMapperPropertiesPort getMapperPropertiesPort;
     private final ConstructorPort constructorPort;
 
-    public ExecuteMapperService(List<MapperPort> mapperPorts,
+    public ExecuteMapperService(List<MapperFieldPort> mapperFieldPorts,
                                 GetMapperPropertiesPort getMapperPropertiesPort,
                                 ConstructorPort constructorPort) {
-        this.mapperPorts = mapperPorts;
+        this.mapperFieldPorts = mapperFieldPorts;
         this.getMapperPropertiesPort = getMapperPropertiesPort;
         this.constructorPort = constructorPort;
     }
 
     @Override
-    public Object map(Object object, Class<?> returnTypeClass) throws IllegalAccessException {
+    public Object map(Object object, Class<?> returnTypeClass) throws Exception {
 
-        List<MapperProperty> mapperProperties = getMapperPropertiesPort.getMapperProperties(object, returnTypeClass);
+        List<MapperProperty> mapperProperties = getMapperPropertiesPort.getMapperProperties(object.getClass().getName().concat(returnTypeClass.getName()));
         List<Field> fieldsSource = Arrays.asList(object.getClass().getDeclaredFields());
         Field[] fieldsDestination = returnTypeClass.getDeclaredFields();
         List<SpecificField> specificFields = new ArrayList<>();
@@ -62,8 +62,8 @@ public class ExecuteMapperService implements MapperUseCase {
         return constructorPort.construct(largestConstructor, returnTypeClass, specificFields);
     }
 
-    private Object getFieldMapped(Object object, Field field, MapperProperty property, Field selectedField) throws IllegalAccessException {
-        return mapperPorts
+    private Object getFieldMapped(Object object, Field field, MapperProperty property, Field selectedField) throws Exception {
+        return mapperFieldPorts
                 .stream()
                 .filter(mapperPort -> mapperPort.apply(property))
                 .findFirst()

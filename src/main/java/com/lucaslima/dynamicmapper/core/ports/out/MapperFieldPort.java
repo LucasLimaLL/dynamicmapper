@@ -4,9 +4,9 @@ import com.lucaslima.dynamicmapper.core.domain.MapperProperty;
 
 import java.lang.reflect.Field;
 
-public interface MapperPort {
+public interface MapperFieldPort {
 
-    Object map(MapperProperty mapperProperty, Field selectedField, Object object) throws IllegalAccessException;
+    Object map(MapperProperty mapperProperty, Field selectedField, Object object) throws IllegalAccessException, Exception;
 
     boolean apply(MapperProperty mapperProperty);
 }

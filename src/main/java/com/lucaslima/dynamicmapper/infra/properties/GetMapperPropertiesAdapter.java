@@ -49,7 +49,7 @@ public class GetMapperPropertiesAdapter implements GetMapperPropertiesPort {
 
     @SneakyThrows
     @Override
-    public List<MapperProperty> getMapperProperties(Object object, Class<?> returnTypeClass) {
-        return PROPERTIES.get(object.getClass().getName() + returnTypeClass.getName());
+    public List<MapperProperty> getMapperProperties(String key) {
+        return PROPERTIES.get(key);
     }
 }

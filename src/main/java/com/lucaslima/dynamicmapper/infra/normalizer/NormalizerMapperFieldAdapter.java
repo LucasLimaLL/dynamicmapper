@@ -2,7 +2,7 @@ package com.lucaslima.dynamicmapper.infra.normalizer;
 
 import com.lucaslima.dynamicmapper.core.domain.MapperProperty;
 import com.lucaslima.dynamicmapper.core.domain.MapperType;
-import com.lucaslima.dynamicmapper.core.ports.out.MapperPort;
+import com.lucaslima.dynamicmapper.core.ports.out.MapperFieldPort;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Field;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-public class NormalizerMapperAdapter implements MapperPort {
+public class NormalizerMapperFieldAdapter implements MapperFieldPort {
 
     private static final Map<String, List<Map<Object, Object>>> CONTEXTS =
             Map.of("gender", List.of(

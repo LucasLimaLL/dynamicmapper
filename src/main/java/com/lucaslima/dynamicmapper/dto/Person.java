@@ -1,12 +1,14 @@
 package com.lucaslima.dynamicmapper.dto;
 
-import java.time.Instant;
+import java.time.LocalDate;
+import java.util.List;
 
 public record Person
         (String name,
-         Instant birthDate,
+         LocalDate birthDate,
          String documentNumber,
          Email email,
          String phone,
-         String gender) {
+         String gender,
+         List<Address> address) {
 }

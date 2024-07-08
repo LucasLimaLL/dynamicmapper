@@ -2,7 +2,7 @@ package com.lucaslima.dynamicmapper.infra.dynamic;
 
 import com.lucaslima.dynamicmapper.core.domain.MapperProperty;
 import com.lucaslima.dynamicmapper.core.domain.MapperType;
-import com.lucaslima.dynamicmapper.core.ports.out.MapperPort;
+import com.lucaslima.dynamicmapper.core.ports.out.MapperFieldPort;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Component;
 
@@ -10,11 +10,11 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 @Component
-public class DynamicMapperAdapter implements MapperPort {
+public class DynamicMapperFieldAdapter implements MapperFieldPort {
 
     @Override
     @SneakyThrows
-    public Object map(MapperProperty mapperProperty, Field selectedField, Object object) throws IllegalAccessException {
+    public Object map(MapperProperty mapperProperty, Field selectedField, Object object) throws Exception {
 
         var parameterTypes = new Class[]{selectedField.get(object).getClass()};
         var parameters = new Object[]{selectedField.get(object)};
